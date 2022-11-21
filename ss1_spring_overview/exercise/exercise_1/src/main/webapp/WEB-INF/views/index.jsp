@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/convert_to_vnd" method="post">
+<form action="/convert-to-vnd" method="post">
     <input type="number" name="input" placeholder="Nhap USD">
     <button type="submit">to VND</button>
 </form>

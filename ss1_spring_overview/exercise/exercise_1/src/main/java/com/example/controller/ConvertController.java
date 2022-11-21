@@ -17,7 +17,7 @@ public class ConvertController {
         return  "/index";
     }
 
-    @PostMapping("/convert_to_vnd")
+    @PostMapping("/convert-to-vnd")
     public String convertToVND(double input, Model model){
         double result = convertService.convertVND(input);
         model.addAttribute("result",result+"VND");
