@@ -1,0 +1,33 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product-Management</title>
+</head>
+<body>
+<p>
+    <a th:href="@{/product/add}">
+        Add new product
+    </a>
+</p>
+<table>
+    <thead>
+    <tr>
+        <th>Name Product</th>
+        <th>Price</th>
+        <th>See details</th>
+        <th>Update</th>
+        <th>Remove</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product,rowStat : ${productList}">
+        <td th:text="${product.name}"></td>
+        <td th:text="${product.price}"></td>
+        <td><a th:href="@{/product/{id}/see_details(id=${product.getId()})}">See details</a></td>
+        <td><a th:href="@{/product/{id}/update(id=${product.getId()})}">update</a></td>
+        <td><a th:href="@{/product/{id}/remove(id=${product.getId()})}">remove</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

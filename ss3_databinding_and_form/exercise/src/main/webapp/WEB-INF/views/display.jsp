@@ -12,9 +12,9 @@
     <title>Title</title>
 </head>
 <body>
-<p>${languages}</p>
-<p>${pageSize}</p>
-<c:if test="${spamsFilter==true}"><p>Enable spams filter</p></c:if>
-<p>${signature}</p>
+<p>Languages: ${languages}</p>
+<p>Page Size: ${pageSize}</p>
+<span>Spams filter:</span><c:if test="${spamsFilter==true}"><span>Enable spams filter</span></c:if>
+<p>Signature: ${signature}</p>
 </body>
 </html>
