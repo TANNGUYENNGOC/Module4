@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Đây là trang update</h1>
-<form action="/product/remove" th:method="post" th:object="${product}">
+<form action="/remove" th:method="post" th:object="${product}">
     <label th:for="id">ID: </label>
     <input th:type="number" th:field="*{id}">
 
@@ -21,5 +21,6 @@
 
     <button th:type="submit" th:value="Add">Remove</button>
 </form>
+<p><a th:href="@{/}">Back to product list</a></p>
 </body>
 </html>

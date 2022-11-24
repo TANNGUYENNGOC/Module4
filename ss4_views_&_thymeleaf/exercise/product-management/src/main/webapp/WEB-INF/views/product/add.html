@@ -6,7 +6,8 @@
 </head>
 <body>
 <h2>Trang thêm mới product</h2>
-<form action="/product/add" th:method="post" th:object="${product}">
+<p><a th:href="@{/}">Back to product list</a></p>
+<form action="/add" th:method="post" th:object="${product}">
     <label th:for="id">ID: </label>
     <input th:type="number" th:field="*{id}">
 
@@ -21,6 +22,5 @@
 
     <button th:type="submit" th:value="Add">ADD</button>
 </form>
-
 </body>
 </html>

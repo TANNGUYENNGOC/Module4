@@ -6,18 +6,19 @@
 </head>
 <body>
 <h1>Đây là trang update</h1>
-<form action="/product/update" th:method="post" th:object="${product}">
+<p><a th:href="@{/}">Back to product list</a></p>
+<form action="/update" th:method="post" th:object="${product}">
     <label th:for="id">ID: </label>
-    <input th:type="number" th:field="*{id}">
+    <input th:type="number" th:field="*{id}" />
 
     <label th:for="name">Name:</label>
-    <input th:type="text" th:field="*{name}">
+    <input th:type="text" th:field="*{name}"/>
 
     <label th:for="price">Price</label>
-    <input th:type="number" th:field="*{price}">
+    <input th:type="number" th:field="*{price}"/>
 
     <label th:for="manufacture">Manufacture</label>
-    <input th:type="text" th:field="*{manufacture}">
+    <input th:type="text" th:field="*{manufacture}"/>
 
     <button th:type="submit" th:value="Add">Save</button>
 </form>

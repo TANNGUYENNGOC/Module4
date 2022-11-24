@@ -5,11 +5,11 @@
 </head>
 <body>
 <p>
-    <a th:href="@{/product/add}">
+    <a th:href="@{/add}">
         Add new product
     </a>
 </p>
-
+<p><a th:href="@{/}">Back to product list</a></p>
 <form action="search" method="post">
     <input name="search" type="text" placeholder="Tìm sản phẩm theo tên">
     <button type="submit" value="Search">SEARCH</button>
@@ -29,9 +29,9 @@
     <tr th:each="product,rowStat : ${productList}">
         <td th:text="${product.name}"></td>
         <td th:text="${product.price}"></td>
-        <td><a th:href="@{/product/{id}/see_details(id=${product.getId()})}">See details</a></td>
-        <td><a th:href="@{/product/{id}/update(id=${product.getId()})}">update</a></td>
-        <td><a th:href="@{/product/{id}/remove(id=${product.getId()})}">remove</a></td>
+        <td><a th:href="@{/{id}/see_details(id=${product.getId()})}">See details</a></td>
+        <td><a th:href="@{/{id}/update(id=${product.getId()})}">update</a></td>
+        <td><a th:href="@{/{id}/remove(id=${product.getId()})}">remove</a></td>
     </tr>
     </tbody>
 </table>
