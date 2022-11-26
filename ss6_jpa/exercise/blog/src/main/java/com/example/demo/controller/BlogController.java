@@ -32,8 +32,8 @@ public class BlogController {
 
     @PostMapping("/create-blog")
     private String addProduct(@ModelAttribute("blog") Blog blog){
-        blogService.save(blog);
-        return "blog/list";
+            blogService.save(blog);
+        return "blog/create";
     }
 
     @GetMapping("/{id}/update")
@@ -42,10 +42,10 @@ public class BlogController {
         return "blog/update";
     }
 
-    @PostMapping("update-blog")
+    @PostMapping("/update-blog")
     private String updateBlog(@ModelAttribute("blog") Blog blog){
         blogService.save(blog);
-        return "blog/list";
+        return "blog/update";
     }
 
     @GetMapping("/{id}/remove")
@@ -56,6 +56,6 @@ public class BlogController {
     @PostMapping("/delete-blog")
     private String deleteBlog(Blog blog){
         blogService.remove(blog.getId());
-        return "";
+        return "blog/list";
     }
 }

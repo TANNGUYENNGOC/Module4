@@ -15,6 +15,10 @@
 <form th:action="@{/update-blog}" th:object="${blog}" method="post">
     <table>
         <tr>
+            <td>ID:</td>
+            <td><input readonly type="text" th:field="*{id}"/></td>
+        </tr>
+        <tr>
             <td>Tittle:</td>
             <td><input type="text" th:field="*{title}"/></td>
         </tr>
@@ -28,7 +32,7 @@
         </tr>
         <tr>
             <td>Date Of Writing:</td>
-            <td><input type="text" th:field="*{dateOfWriting}"/></td>
+            <td><input type="date" th:field="*{dateOfWriting}"/></td>
         </tr>
         <tr>
             <td><input type="submit" value="Create Blog"></td>
