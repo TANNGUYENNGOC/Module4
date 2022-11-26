@@ -64,7 +64,7 @@ public class ProductRepositoryImpl implements IProductRepository{
         try {
             session = ConnectionUtil.sessionFactory.openSession();
             transaction = session.beginTransaction();
-
+            // dòng 68 có thể thay thế merge bằng persist
             session.merge(product);
             transaction.commit();
         } finally {
@@ -84,6 +84,7 @@ public class ProductRepositoryImpl implements IProductRepository{
             transaction=session.beginTransaction();
             product= (Product) session.createQuery("from Product p where id =:idx").setParameter("idx",id).getSingleResult();
             session.remove(product);
+            // thực hiện xong 1 tiến trình phải comit lại để lưu sự thay đổi với table trong DB
             transaction.commit();
         }finally {
             if (session != null) {
@@ -94,6 +95,16 @@ public class ProductRepositoryImpl implements IProductRepository{
 
     @Override
     public List<Product> searchName(String nameProduct) {
-        return null;
+        Session session = null;
+        List<Product> productList = null;
+        try {
+            session = ConnectionUtil.sessionFactory.openSession();
+            productList = session.createQuery("FROM  Product WHERE name like :nameProduct").setParameter("nameProduct","%"+nameProduct+"%").getResultList();
+        } finally {
+            if (session != null){
+                session.close();
+            }
+        }
+        return productList;
     }
 }

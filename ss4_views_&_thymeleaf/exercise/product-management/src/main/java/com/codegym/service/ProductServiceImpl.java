@@ -3,7 +3,6 @@ package com.codegym.service;
 import com.codegym.model.Product;
 import com.codegym.repository.IProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,7 +38,7 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public List<Product> searchName(String nameProduct) {
-        return null;
+        return productRepository.searchName(nameProduct);
     }
 }
 

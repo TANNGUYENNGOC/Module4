@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a43b419e-4198-4d7a-a2d5-3efba83dbab2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/practice_1/demo/src/main/java/com/example/demo/controller/GreetingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/practice_1/demo/src/main/resources/templates/greeting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/6.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/build/classes/java/main/com/codegym/repository/ConnectionUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/build/classes/java/main/com/codegym/repository/ConnectionUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/build/classes/java/main/com/codegym/repository/ProductRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/build/classes/java/main/com/codegym/repository/ProductRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/build/classes/java/main/com/codegym/service/ProductServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/build/classes/java/main/com/codegym/service/ProductServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/build/libs/product-management-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/build/libs/product-management-1.0-SNAPSHOT.war" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/src/main/java/com/codegym/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/src/main/java/com/codegym/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/src/main/java/com/codegym/repository/ConnectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/src/main/java/com/codegym/repository/ConnectionUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/src/main/java/com/codegym/repository/ProductRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/src/main/java/com/codegym/repository/ProductRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/src/main/java/com/codegym/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/src/main/java/com/codegym/service/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/src/main/webapp/WEB-INF/views/product/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ss4_views_&amp;_thymeleaf/exercise/product-management/src/main/webapp/WEB-INF/views/product/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss5/demo.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss5/demo/image1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss5/demo/image2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss5/demo/image3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss5/demo/image4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ss5/demo/image5.png" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2I1DyhmCHI2j9ALtHjbYkrLoGU0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.codegym.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a43b419e-4198-4d7a-a2d5-3efba83dbab2" name="Default Changelist" comment="" />
+      <created>1669340451765</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1669340451765</updated>
+      <workItem from="1669340456881" duration="615000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="91" y="6" key="new project wizard" timestamp="1669341071255">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="91" y="6" key="new project wizard/0.0.1280.689@0.0.1280.689" timestamp="1669341071255" />
+  </component>
+</project>
