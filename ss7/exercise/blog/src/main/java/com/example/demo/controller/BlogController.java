@@ -11,8 +11,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.List;
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
@@ -35,9 +35,10 @@ public class BlogController {
     }
 
     @PostMapping("/create")
-    private String addProduct(@ModelAttribute("blog") Blog blog){
+    private String addProduct(@ModelAttribute("blog") Blog blog,RedirectAttributes redirectAttributes){
             blogService.save(blog);
-        return "blog/create";
+            redirectAttributes.addFlashAttribute("mess","thêm mới thành công");
+        return "redirect:/blog/";
     }
 
     @GetMapping("/{id}/update")
@@ -53,9 +54,11 @@ public class BlogController {
                               @RequestParam String content,
                               @RequestParam String author,
                               @RequestParam String dateOfWriting,
-                              @RequestParam Category category){
+                              @RequestParam Category category,
+                              RedirectAttributes redirectAttributes){
         blogService.save(new Blog(id,title,content,author,dateOfWriting,category));
-        return "blog/update";
+        redirectAttributes.addFlashAttribute("mess","Chỉnh sửa thành công");
+        return "redirect:/blog/";
     }
 
     @GetMapping("/{id}/remove")
@@ -64,8 +67,9 @@ public class BlogController {
         return "blog/delete";
     }
     @PostMapping("/delete-blog")
-    private String deleteBlog(Blog blog){
+    private String deleteBlog(Blog blog, RedirectAttributes redirectAttributes){
         blogService.remove(blog.getId());
-        return "blog";
+        redirectAttributes.addFlashAttribute("mess","Xóa thành công");
+        return "redirect:/blog/";
     }
 }
