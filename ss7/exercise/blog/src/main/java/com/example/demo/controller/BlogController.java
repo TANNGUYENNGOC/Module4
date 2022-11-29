@@ -41,22 +41,23 @@ public class BlogController {
         return "redirect:/blog/";
     }
 
-    @GetMapping("/{id}/update")
-    private String showFormUpdate(@PathVariable Long id, Model model){
+    @GetMapping("/update")
+    private String showFormUpdate(@RequestParam Long id, Model model){
         model.addAttribute("blog",blogService.findById(id));
         model.addAttribute("categoryList",categoryService.findAll());
         return "blog/update";
     }
 
     @PostMapping("/update-blog")
-    private String updateBlog(@RequestParam Long id ,
-                              @RequestParam String title,
+    private String updateBlog(@RequestParam("id") Long id ,
+                              @RequestParam("title") String name,
                               @RequestParam String content,
                               @RequestParam String author,
                               @RequestParam String dateOfWriting,
                               @RequestParam Category category,
                               RedirectAttributes redirectAttributes){
-        blogService.save(new Blog(id,title,content,author,dateOfWriting,category));
+        Blog blog = new Blog(id,name,content,author,dateOfWriting,category);
+        blogService.save(blog);
         redirectAttributes.addFlashAttribute("mess","Chỉnh sửa thành công");
         return "redirect:/blog/";
     }

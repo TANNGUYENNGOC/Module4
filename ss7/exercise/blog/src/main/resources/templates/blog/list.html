@@ -21,7 +21,7 @@
             <td th:text="${blog.author}"></td>
             <td th:text="${blog.dateOfWriting}"></td>
             <td th:text="${blog.category.getStringCategory}"></td>
-            <td><a th:href="@{/blog/{id}/update(id=${blog.getId()})}">update</a></td>
+            <td><a th:href="@{/blog/update(id=${blog.getId()})}">update</a></td>
             <td><a th:href="@{/blog/{id}/remove(id=${blog.getId()})}">remove</a></td>
         </tr>
     </th:block>
