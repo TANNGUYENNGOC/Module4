@@ -9,7 +9,7 @@
 <body>
 <h1>Form update song</h1>
 
-<form th:object="${song}" th:action="@{/song/update}" method="post">
+<form th:object="${songDto}" th:action="@{/song/update}" method="post">
     <div hidden class="mb-3">
         <label for="exampleInputEmail" class="form-label">Id:</label>
         <input class="form-control" id="exampleInputEmail" type="text" th:field="*{id}">

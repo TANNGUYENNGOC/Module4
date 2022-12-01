@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.SongDto;
 import com.example.demo.model.Song;
 import com.example.demo.servie.ISongService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +20,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/song")
-public class songController {
+public class SongController {
     @Autowired
     ISongService songService;
 
-    @GetMapping("list-song")
+    @GetMapping("list")
     private String showListSong(Model model) {
         List<Song> songList = songService.findAll();
         model.addAttribute("songList", songList);
@@ -31,31 +33,41 @@ public class songController {
 
     @GetMapping("/create")
     private String showFormCreate(Model model) {
-        model.addAttribute("song", new Song());
+        model.addAttribute("songDto", new SongDto());
         return "song/create";
     }
 
     @PostMapping("/create")
-    private String createSong(@Validated @ModelAttribute("song") Song song, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        new Song().validate(song,bindingResult);
+    private String createSong(@Validated @ModelAttribute("songDto") SongDto songDto,
+                              BindingResult bindingResult,
+                              RedirectAttributes redirectAttributes) {
+        new SongDto().validate(songDto,bindingResult);
         if (bindingResult.hasErrors()){
             return "song/create";
         }
+        Song song = new Song();
+        BeanUtils.copyProperties(songDto, song);
         songService.save(song);
         redirectAttributes.addFlashAttribute("mess", "thêm mới thành công");
-        return "redirect:/song/list-song";
+        return "redirect:/song/list";
     }
 
     @GetMapping("/{id}/update")
-    private String showFormUpdate(@ModelAttribute("song") Song song, Model model) {
-        model.addAttribute("song",songService.findById(song.getId()));
+    private String showFormUpdate(@ModelAttribute("songDto") SongDto songDto, Model model) {
+        model.addAttribute("songDto",songService.findById(songDto.getId()));
         return "song/update";
     }
 
     @PostMapping("/update")
-    private String updateSong(@ModelAttribute("song") Song song, RedirectAttributes redirectAttributes) {
+    private String updateSong(@Validated @ModelAttribute("songDto") SongDto songDto,BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        new SongDto().validate(songDto,bindingResult);
+        if (bindingResult.hasErrors()){
+            return "song/update";
+        }
+        Song song = new Song();
+        BeanUtils.copyProperties(songDto,song);
         songService.save(song);
         redirectAttributes.addFlashAttribute("mess", "chỉnh sửa thành công");
-        return "redirect:/song/list-song";
+        return "redirect:/song/list";
     }
 }

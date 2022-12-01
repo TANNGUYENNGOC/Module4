@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "song_list")
-public class Song implements Validator {
+public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -70,22 +70,4 @@ public class Song implements Validator {
         this.kindOfMusic = kindOfMusic;
     }
 
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return false;
-    }
-
-    @Override
-    public void validate(Object target, Errors errors) {
-        Song song = (Song) target;
-        if(!song.getName_song().matches("^([A-Z][a-z]+[ ])+([A-Z][a-z]+){1,800}$")){
-            errors.rejectValue("name_song","name_song","Tên bài hát không chứa kí tự đặc biệt,không vượt quá 800 kí tự và không được để trống");
-        }
-        if (!song.getSingerName().matches("^([A-Z][a-z]+[ ])+([A-Z][a-z]+){1,300}$")){
-            errors.rejectValue("singerName","singerName","Tên nghệ sĩ không được chứa kí tự đặc biệt, không vượt quá 300 kí tự và không được để trống");
-        }
-        if(!song.getKindOfMusic().matches("^([A-Z][a-z]+[ ])+([A-Z][a-z]+){1,1000}$")){
-            errors.rejectValue("kindOfMusic","kindOfMusic","Tên thể loại không được chứa kí tự đặc biệt, không vượt quá 1000 kí tự và không được để trống");
-        }
-    }
 }

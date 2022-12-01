@@ -9,7 +9,7 @@
 <body>
 <h1>Form create user</h1>
 <p style="color: red" th:text="${mess}"></p>
-<form th:object="${user}" th:action="@{/user/create}" method="post">
+<form th:object="${userDto}" th:action="@{/user/create}" method="post">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">First name</label>
         <input class="form-control" id="exampleInputEmail1" type="text" th:field="*{firstName}">

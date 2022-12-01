@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách khách hàng</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid vh-100">
+    <div class="header col-xl-12 d-flex " style="height: 15%;margin-top: 10px;font-size: 12.5px">
+        <div class="col-xl-2">
+            <img style="height: 90%" src="https://furamavietnam.com/wp-content/uploads/2018/10/logo.png"
+                 alt=" Logo Header Menu">
+        </div>
+        <div class="col-xl-4"><img src="../img/Screenshot 2022-11-01 162539.png" height="124" width="321"/>
+        </div>
+        <div class="d-flex col-xl-3" style="height: 100%">
+            <img src="../img/address.png" height="48" width="48"/>
+            <p>
+                103 – 105 Đường Võ Nguyên Giáp, Phường Khuê Mỹ, Quận Ngũ hành Sơn, Tp. Đà Nẵng, Việt Nam <br>
+                7.0 km từ Sân bay Quốc tế Đà Nẵng</p>
+        </div>
+        <div class=" col-xl-3" style="padding-left: 30px">
+            <div class="col-xl-6 d-flex">
+                <img src="../img/phone.png" height="30" width="30"/>
+                <p>84-236-3847 333/888</p>
+            </div>
+            <div class="col-xl-6 d-flex">
+                <img src="../img/mail.png" height="30px" width="30px"/>
+                <p>reservation@furamavietnam.com</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="row sticky-top" style="height: 10%;margin-bottom: 10px">
+        <div class="col-xl-8 " style="background-color: #0d6056;padding-top: 5px">
+            <ul class="nav  justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" style="color: white" aria-current="page" href="">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="/employee/list"
+                       style="color: white">Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer" style="color: white">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: white">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" style="color: white">Contract</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xl-4" style="background-color: #0d6056;padding-top: 10px">
+            <form class="d-flex" role="search" action="/customer?action=search" method="post">
+                <input style="height: 80%" class="form-control me-2" type="search" placeholder="Search"
+                       aria-label="Search" name="search">
+                <button class="btn btn-outline-success" type="submit"
+                        style="background-color: #5c636a;height: 80%;border: 2px solid yellow;color: white">Search
+                </button>
+            </form>
+        </div>
+    </div>
+    <h1>Danh sách khách hàng <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Thêm mới khách hàng</button></h1>
+    <p style="color: red" th:text="${mess}"></p>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Kiểu khách hàng</th>
+            <th scope="col">Tên khách hàng</th>
+            <th scope="col">Ngày sinh</th>
+            <th scope="col">Giới tính</th>
+            <th scope="col">Số CMND</th>
+            <th scope="col">Số điện thoại</th>
+            <th scope="col">Email</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Chỉnh sửa</th>
+            <th scope="col">Xóa</th>
+        </tr>
+        <th:block th:each="customer : ${customers}">
+            <tr>
+                <td th:text="${customer.customerType.name}"></td>
+                <td th:text="${customer.name}"></td>
+                <td th:text="${customer.dateOfBirth}"></td>
+                <td th:text="${customer.gender}"></td>
+                <td th:text="${customer.idCard}"></td>
+                <td th:text="${customer.phoneNumber}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.address}"></td>
+                <td><a class="btn btn-primary" th:href="@{/customer/{id}/update(id=${customer.getId()})}">Sửa</a></td>
+                <td><a class="btn btn-danger" th:href="@{/customer/{id}/remove(id=${customer.getId()})}">Xóa</a></td>
+            </tr>
+        </th:block>
+    </table>
+    <a th:href="@{/customer/list(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}" class="btn btn-success">Previous</a>
+    <span th:text="${customers.number+1}+'/'+${customers.totalPages}"></span>
+    <a th:href="@{/customer/list(page=${customers.number + 1})}" th:if="${customers.hasNext()}" class="btn btn-success">Next</a>
+</div>
+<!--modal thêm mới customer-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm mới khách hàng</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" th:action="@{/add}" th:object="${customer}">
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">Kiểu khách hàng:</label>
+                        <input type="text" class="form-control" id="recipient-name"  th:field="*{customerType}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name1" class="col-form-label">Tên khách khách hàng:</label>
+                        <input type="text" class="form-control" id="recipient-name1" th:field="*{name}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name2" class="col-form-label">Ngày sinh:</label>
+                        <input type="text" class="form-control" id="recipient-name2" th:field="*{dateOfBirth}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name3" class="col-form-label">Giới tính:</label>
+                        <input type="text" class="form-control" id="recipient-name3" th:field="*{gender}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name4" class="col-form-label">Số CMND:</label>
+                        <input type="text" class="form-control" id="recipient-name4" th:field="*{idCard}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name5" class="col-form-label">Số điện thoại</label>
+                        <input type="text" class="form-control" id="recipient-name5" th:field="*{phoneNumber}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name6" class="col-form-label">Email</label>
+                        <input type="text" class="form-control" id="recipient-name6" th:field="*{email}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="recipient-name7" class="col-form-label">Địa chỉ</label>
+                        <input type="text" class="form-control" id="recipient-name7" th:field="*{address}">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</html>

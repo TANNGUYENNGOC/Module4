@@ -48,7 +48,7 @@ public class BlogController {
         return "blog/update";
     }
 
-    @PostMapping("/update-blog")
+    @PostMapping("/update")
     private String updateBlog(@RequestParam("id") Long id ,
                               @RequestParam("title") String name,
                               @RequestParam String content,
@@ -67,7 +67,7 @@ public class BlogController {
         model.addAttribute("blog",blogService.findById(id));
         return "blog/delete";
     }
-    @PostMapping("/delete-blog")
+    @PostMapping("/delete")
     private String deleteBlog(Blog blog, RedirectAttributes redirectAttributes){
         blogService.remove(blog.getId());
         redirectAttributes.addFlashAttribute("mess","Xóa thành công");
