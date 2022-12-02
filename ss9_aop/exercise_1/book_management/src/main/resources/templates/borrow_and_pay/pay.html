@@ -8,13 +8,10 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-<div style="height: 50px;background-color: darkcyan">
-    <h1 style="text-align: center">Trả sách</h1>
-</div>
-<form th:object="${book}" action="borrowAndPay/pay">
-    <div hidden class="mb-3" >
+<form method="post" action="/borrowAndPay/pay">
+    <div class="mb-3" >
         <label for="exampleInputEmail1" class="form-label">Nhập mã sách:</label>
-        <input class="form-control" id="exampleInputEmail1" th:field="*{id}">
+        <input class="form-control" id="exampleInputEmail1" name="maSach">
     </div>
     <button type="submit" class="btn btn-primary">Trả</button>
 </form>

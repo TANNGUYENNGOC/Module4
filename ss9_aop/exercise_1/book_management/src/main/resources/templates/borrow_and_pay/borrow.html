@@ -11,7 +11,7 @@
 <div style="height: 50px;background-color: darkcyan">
     <h1 style="text-align: center">Đăng kí mượn</h1>
 </div>
-<form th:object="${book}" action="borrowAndPay/borrow">
+<form th:object="${book}" th:action="@{/borrowAndPay/borrow}" th:method="post">
     <div class="mb-3" >
         <label for="exampleInputEmail1" class="form-label">ID:</label>
         <input class="form-control" id="exampleInputEmail1" th:field="*{id}">

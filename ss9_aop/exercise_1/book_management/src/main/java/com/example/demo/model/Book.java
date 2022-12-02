@@ -12,19 +12,25 @@ public class Book {
     private String nameBook;
 
     private int amount;
+    private int sachHienCo;
+    private int sachDaMuon;
 
-    public Book(int id, String nameBook, int amount) {
+    public Book() {
+    }
+
+    public Book(int id, String nameBook, int amount, int sachHienCo, int sachDaMuon) {
         this.id = id;
         this.nameBook = nameBook;
         this.amount = amount;
+        this.sachHienCo = sachHienCo;
+        this.sachDaMuon = sachDaMuon;
     }
 
-    public Book(String nameBook, int amount) {
+    public Book(String nameBook, int amount, int sachHienCo, int sachDaMuon) {
         this.nameBook = nameBook;
         this.amount = amount;
-    }
-
-    public Book() {
+        this.sachHienCo = sachHienCo;
+        this.sachDaMuon = sachDaMuon;
     }
 
     public int getId() {
@@ -49,5 +55,21 @@ public class Book {
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public int getSachHienCo() {
+        return sachHienCo;
+    }
+
+    public void setSachHienCo(int sachHienCo) {
+        this.sachHienCo = sachHienCo;
+    }
+
+    public int getSachDaMuon() {
+        return sachDaMuon;
+    }
+
+    public void setSachDaMuon(int sachDaMuon) {
+        this.sachDaMuon = sachDaMuon;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.demo.service.borrow_and_pay;
 
-import com.example.demo.model.Book;
 import com.example.demo.model.BorrowAndPay;
 import com.example.demo.repository.IBorrowAndPayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,25 +7,25 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
-
 @Service
 public class BorrowAndPayImpl implements IBorrowAndPayService {
     @Autowired
     IBorrowAndPayRepository borrowAndPayRepository;
 
     @Override
-    public Page<Book> findAll(Pageable pageable) {
+    public Page<BorrowAndPay> findAll(Pageable pageable) {
         return borrowAndPayRepository.findAll(pageable);
     }
 
     @Override
-    public Optional<Book> findById(Integer id) {
+    public Optional<BorrowAndPay> findById(Integer id) {
         return borrowAndPayRepository.findById(id);
     }
 
     @Override
-    public void save(Book borrowAndPay) {
+    public void save(BorrowAndPay borrowAndPay) {
         borrowAndPayRepository.save(borrowAndPay);
     }
 
@@ -34,13 +33,9 @@ public class BorrowAndPayImpl implements IBorrowAndPayService {
     public void remove(Integer id) {
         borrowAndPayRepository.deleteById(id);
     }
-    @Override
-    public void borrow(int id) {
-        borrowAndPayRepository.borrow(id);
-    }
 
     @Override
-    public void pay(int id) {
-        borrowAndPayRepository.pay(id);
+    public List<BorrowAndPay> BORROW_AND_PAY_LIST() {
+        return borrowAndPayRepository.findAll();
     }
 }

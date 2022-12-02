@@ -33,5 +33,30 @@ public class BookServiceImpl implements IBookService {
         bookRepository.deleteById(id);
     }
 
+    @Override
+    public void borrow1(int id) {
+        bookRepository.borrow1(id);
+    }
+
+    @Override
+    public void borrow2(int id) {
+        bookRepository.borrow2(id);
+    }
+
+    @Override
+    public void pay1(int id) {
+        bookRepository.pay1(id);
+    }
+
+    @Override
+    public void pay2(int id) {
+        bookRepository.pay2(id);
+    }
+
+    @Override
+    public void removeRecord(int code) {
+        bookRepository.removeRecord(code);
+    }
+
 
 }
