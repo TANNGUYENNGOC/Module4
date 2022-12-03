@@ -1,44 +1,29 @@
 package com.example.demo.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public long id;
     private String name;
     private String image;
     private String description;
-    private double price;
+    private float price;
     private short discount;
 
     public Product() {
     }
 
-    public Product(String name, String image, String description, double price, short discount) {
-        this.name = name;
-        this.image = image;
-        this.description = description;
-        this.price = price;
-        this.discount = discount;
-    }
-
-    public Product(Long id, String name, String image, String description, double price, short discount) {
-        this.id = id;
-        this.name = name;
-        this.image = image;
-        this.description = description;
-        this.price = price;
-        this.discount = discount;
-    }
-
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -66,11 +51,11 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 

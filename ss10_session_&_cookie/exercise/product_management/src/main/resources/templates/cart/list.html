@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+</head>
+<body>
+<p>
+    <a href="/shop">Shop</a>
+</p>
+<h1>Your Cart</h1>
+<form th:action="@{/shop}" th:object="${cartDto}" method="post">
+    <h3>Total Items: <span th:text="${cartDto.countItemQuantity()}"></span></h3>
+    <h3>Total Products: <span th:text="${cartDto.countProductQuantity()}"></span></h3>
+    <table border="1">
+        <tr>
+            <th>Item</th>
+
+            <th>Image</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        <tr th:each="product: ${cartDto.productMap}">
+            <td th:text="${product.key.name}"></td>
+            <td><img style="width: 100%;height: 50px"  th:src="@{${product.key.image}}" alt=""></td>
+            <td th:text="${product.key.price}"></td>
+            <td><th:block th:if="${product.getValue()}>1">
+                <a id="decrease_button" th:text="${'-'}" th:href="@{shop/remove/__${product.key.id}__}"></a>
+            </th:block>
+
+                <span th:text="${product.getValue()}"></span>
+                <a id="increase_button" th:href="@{shop/add/__${product.key.id}__}"
+                   th:text="${'+'}"></a>
+            </td>
+
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td th:text="${cartDto.countTotalPayment()}"></td>
+        </tr>
+        <tr>
+            <td>
+                <a id="increase_button" th:href="@{cart/pay}">Pay</a>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
