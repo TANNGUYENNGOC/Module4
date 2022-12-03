@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 @Controller
@@ -21,19 +23,29 @@ public class ProductController {
     IProductService productService;
 
     @ModelAttribute("cart")
-    private CartDto cartDto (){
+    public CartDto cartDto (){
         return new CartDto();
     }
 
+//    @GetMapping("")
+//    private String showListProduct(Model model, Pageable pageable){
+//        model.addAttribute("listProduct",productService.findAll(pageable));
+//        return "shop/list";
+//    }
     @GetMapping("")
-    private String showListProduct(Model model, Pageable pageable){
-        model.addAttribute("listProduct",productService.findAll(pageable));
+    public String showListProduct(Model model, Pageable pageable,@CookieValue(value ="idProduct",defaultValue = "-1") Long id){
+//        model.addAttribute("listProduct",productService.findAll(pageable));
+        if(id!=-1){
+            model.addAttribute("historyProduct",productService.findById(id).get());
+        }
+            model.addAttribute("listProduct",productService.findAll(pageable));
+
         return "shop/list";
     }
 
     //Cộng sản phẩm trong cart
     @GetMapping("/add/{id}")
-    private String showListCartCount(@PathVariable("id") long id,@SessionAttribute("cart") CartDto cartDto){
+    public String showListCartCount(@PathVariable("id") long id,@SessionAttribute("cart") CartDto cartDto){
         Optional<Product> product = productService.findById(id);
         ProductDto productDto = new ProductDto();
         BeanUtils.copyProperties(product.get(),productDto);
@@ -43,11 +55,21 @@ public class ProductController {
 
     // Trừ sản phẩm trong cart
     @GetMapping("/remove/{id}")
-    private String showListCartSubtraction(@PathVariable("id") long id,@SessionAttribute("cart") CartDto cartDto){
+    public String showListCartSubtraction(@PathVariable("id") long id,@SessionAttribute("cart") CartDto cartDto){
         Optional<Product> product = productService.findById(id);
         ProductDto productDto = new ProductDto();
         BeanUtils.copyProperties(product.get(),productDto);
         cartDto.removeProduct(productDto);
         return "redirect:/cart";
+    }
+
+    @GetMapping("/detail/{id}")
+    public String showDetail(@PathVariable("id") long id, HttpServletResponse response,Model model){
+        model.addAttribute("detailProduct",productService.findById(id).get());
+        Cookie cookie = new Cookie("idProduct",String.valueOf(id));
+        cookie.setMaxAge(30);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        return "shop/detail";
     }
 }

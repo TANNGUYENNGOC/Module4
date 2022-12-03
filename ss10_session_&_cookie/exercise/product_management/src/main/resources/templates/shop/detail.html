@@ -15,13 +15,13 @@
     <a href="/shop" class="btn btn-success">Back Home</a>
     <div class="card mb-3">
         <div class="row g-0">
-            <img style="width: 100%" th:src="@{${product.img}}" class="img-fluid rounded-start">
+            <img style="width: 100%" th:src="@{${detailProduct.image}}" class="img-fluid rounded-start">
         </div>
         <div class="col-md-8 ">
             <div class="card-body">
-                <h5 class="card-title" th:text="${product.name}"></h5>
-                <p class="card-text" th:text="${product.description}"></p>
-                <strong class="card-text" th:text="${product.price}"></strong>
+                <h5 class="card-title" th:text="${detailProduct.name}"></h5>
+                <p class="card-text" th:text="${detailProduct.description}"></p>
+                <strong class="card-text" th:text="${detailProduct.price}"></strong>
                 <p class="card-text"><small class="text-muted"> Last Update 3 mins ago</small></p>
             </div>
         </div>
