@@ -1,8 +1,14 @@
-package com.example.demo.dto;
+package com.example.demo.model;
 
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-public class ProductDto {
+@Entity
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
     private String name;
     private String image;
@@ -10,22 +16,7 @@ public class ProductDto {
     private float price;
     private short discount;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ProductDto)){
-            return false;
-        }
-        ProductDto that = (ProductDto) o;
-        return id == that.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    public ProductDto() {
+    public Product() {
     }
 
     public long getId() {

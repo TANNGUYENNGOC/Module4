@@ -13,9 +13,7 @@ public class ProductDto {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ProductDto)){
-            return false;
-        }
+        if (!(o instanceof ProductDto)) return false;
         ProductDto that = (ProductDto) o;
         return id == that.id;
     }
