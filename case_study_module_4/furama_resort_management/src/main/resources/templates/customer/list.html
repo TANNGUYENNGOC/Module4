@@ -38,7 +38,7 @@
         <div class="col-xl-8 " style="background-color: #0d6056;padding-top: 5px">
             <ul class="nav  justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link active" style="color: white" aria-current="page" href="">Home</a>
+                    <a class="nav-link active" style="color: white" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
@@ -66,11 +66,8 @@
             </form>
         </div>
     </div>
-    <h1>Danh sách khách hàng
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                data-bs-whatever="@mdo">Thêm mới khách hàng
-        </button>
-    </h1>
+    <h1>Danh sách khách hàng</h1>
+    <a href="/customer/create">Thêm mới khách hàng</a>
     <p style="color: red" th:text="${mess}"></p>
     <table class="table table-striped">
         <tr>
@@ -104,57 +101,6 @@
        class="btn btn-success">Previous</a>
     <span th:text="${customers.number+1}+'/'+${customers.totalPages}"></span>
     <a th:href="@{/customer/list(page=${customers.number + 1})}" th:if="${customers.hasNext()}" class="btn btn-success">Next</a>
-</div>
-<!--modal thêm mới customer-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm mới khách hàng</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="post" th:action="@{/add}" th:object="${customer}">
-                    <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Kiểu khách hàng:</label>
-                        <input type="text" class="form-control" id="recipient-name" th:field="*{customerType}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name1" class="col-form-label">Tên khách khách hàng:</label>
-                        <input type="text" class="form-control" id="recipient-name1" th:field="*{name}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name2" class="col-form-label">Ngày sinh:</label>
-                        <input type="text" class="form-control" id="recipient-name2" th:field="*{dateOfBirth}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name3" class="col-form-label">Giới tính:</label>
-                        <input type="text" class="form-control" id="recipient-name3" th:field="*{gender}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name4" class="col-form-label">Số CMND:</label>
-                        <input type="text" class="form-control" id="recipient-name4" th:field="*{idCard}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name5" class="col-form-label">Số điện thoại</label>
-                        <input type="text" class="form-control" id="recipient-name5" th:field="*{phoneNumber}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name6" class="col-form-label">Email</label>
-                        <input type="text" class="form-control" id="recipient-name6" th:field="*{email}">
-                    </div>
-                    <div class="mb-3">
-                        <label for="recipient-name7" class="col-form-label">Địa chỉ</label>
-                        <input type="text" class="form-control" id="recipient-name7" th:field="*{address}">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
-            </div>
-        </div>
-    </div>
 </div>
 </body>
 <!-- JavaScript Bundle with Popper -->

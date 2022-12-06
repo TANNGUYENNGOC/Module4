@@ -7,6 +7,7 @@ import com.example.demo.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api-blog")
+@CrossOrigin
 public class BlogRestController {
     @Autowired
     IBlogService blogService;
@@ -22,7 +24,7 @@ public class BlogRestController {
     ICategoryService categoryService;
 
     @GetMapping("")
-    public ResponseEntity<Page<Blog>> getList(Pageable pageable) {
+    public ResponseEntity<Page<Blog>> getList(@PageableDefault(page = 0,size = 3) Pageable pageable) {
         Page<Blog> blogList = blogService.findAll(pageable);
 //        if (blogList.getSize()==0) {
         if (blogList.isEmpty()) {
@@ -33,8 +35,8 @@ public class BlogRestController {
     }
 
     @GetMapping("/{category}")
-    public ResponseEntity<List<Blog>> getListACategory(@PathVariable("category") Category category) {
-        List<Blog> categoryList = blogService.findByCategory(category);
+    public ResponseEntity<Page<Blog>> getListACategory(@PathVariable("category") Category category,Pageable pageable) {
+        Page<Blog> categoryList = blogService.findByCategory(category,pageable);
         if (categoryList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

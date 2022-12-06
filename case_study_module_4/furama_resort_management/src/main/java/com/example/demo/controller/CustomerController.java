@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Customer;
+import com.example.demo.model.CustomerType;
 import com.example.demo.service.ICustomerService;
+import com.example.demo.service.ICustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,11 +16,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
     @Autowired
     ICustomerService customerService;
+    @Autowired
+    ICustomerTypeService customerTypeService;
 
     @GetMapping("/list")
     private String showListCustomer(Model model, @PageableDefault(page = 0,size = 5) Pageable pageable){
@@ -27,10 +33,10 @@ public class CustomerController {
         return "customer/list";
     }
 
-    @GetMapping("/add")
-    private String addCustomer(@ModelAttribute("customer")Customer customer, RedirectAttributes redirectAttributes){
-        customerService.save(customer);
-        redirectAttributes.addFlashAttribute("mess","Thêm mới thành công");
-        return "redirect:/customer/list";
-    }
+   @GetMapping("/create")
+    private String showFormCreate(Model model,Pageable pageable){
+       List<CustomerType> customerTypes = (List<CustomerType>) customerTypeService.findAll(pageable);
+        model.addAttribute("listCustomerType",customerTypes);
+        return "customer/create";
+   }
 }

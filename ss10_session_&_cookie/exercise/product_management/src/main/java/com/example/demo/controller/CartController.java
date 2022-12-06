@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/cart")
 public class CartController {
     @GetMapping("")
+    //B4: sử dụng session cho cart
     public String showCart(@SessionAttribute("cart")CartDto cartDto, Model model){
         model.addAttribute("cartDto",cartDto);
         return "cart/list";

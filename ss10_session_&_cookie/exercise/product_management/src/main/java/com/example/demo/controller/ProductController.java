@@ -17,14 +17,14 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/shop")
-@SessionAttributes("cart")
+@SessionAttributes("cart") //B1: khai báo session (nhớ có s)
 public class ProductController {
     @Autowired
     IProductService productService;
 
-    @ModelAttribute("cart")
+    @ModelAttribute("cart") //B2: khởi tạo giá trị ban đầu cho session
     public CartDto cartDto() {
-        return new CartDto();
+        return new CartDto(); //khởi tạo 1 giỏ hàng rỗng
     }
 
     //    @GetMapping("")
@@ -35,14 +35,15 @@ public class ProductController {
     @GetMapping("/detail/{id}")
     public String showDetail(@PathVariable("id") long id, HttpServletResponse response, Model model) {
         model.addAttribute("detailProduct", productService.findById(id).get());
-        Cookie cookie = new Cookie("idProduct", String.valueOf(id));// ??
-        cookie.setMaxAge(30);
-        cookie.setPath("/");
-        response.addCookie(cookie);//??
+        Cookie cookie = new Cookie("idProduct", String.valueOf(id));//Chuyển long thành String
+        cookie.setMaxAge(30); //thời gian tồn tại của cookie
+        cookie.setPath("/"); //Tất cả các request
+        response.addCookie(cookie);//B1: đưa cookie xuống cho client
         return "shop/detail";
     }
 
     @GetMapping("")
+    //B2: Lấy idProduct từ cookie
     public String showListProduct(Model model, Pageable pageable, @CookieValue(value = "idProduct", defaultValue = "-1") Long id) {
 //        model.addAttribute("listProduct",productService.findAll(pageable));
         if (id != -1) {
@@ -54,6 +55,7 @@ public class ProductController {
     }
 
     //Cộng sản phẩm trong cart
+    //B3: Cập nhật cart
     @GetMapping("/add/{id}")
     public String showListCartCount(@PathVariable("id") long id, @SessionAttribute("cart") CartDto cartDto) {
         Optional<Product> product = productService.findById(id);
