@@ -33,7 +33,7 @@ public class BlogRestController {
     }
 
     @GetMapping("/{category}")
-    public ResponseEntity<List<Blog>> getListACategory(@PathVariable("category") Category category) {
+    public ResponseEntity<List<Blog>> getBlogByCategory(@PathVariable("category") Category category) {
         List<Blog> categoryList = blogService.findByCategory(category);
         if (categoryList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
