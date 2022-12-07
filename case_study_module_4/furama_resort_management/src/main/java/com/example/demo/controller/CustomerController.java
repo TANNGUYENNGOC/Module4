@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.CustomerDto;
 import com.example.demo.model.Customer;
 import com.example.demo.model.CustomerType;
 import com.example.demo.service.ICustomerService;
@@ -35,8 +36,12 @@ public class CustomerController {
 
    @GetMapping("/create")
     private String showFormCreate(Model model,Pageable pageable){
-       List<CustomerType> customerTypes = (List<CustomerType>) customerTypeService.findAll(pageable);
+       Page<CustomerType> customerTypes = customerTypeService.findAll(pageable);
+       model.addAttribute("customerDto",new CustomerDto());
         model.addAttribute("listCustomerType",customerTypes);
         return "customer/create";
    }
+
+//   @PostMapping("/create")
+//    public String createCustomer()
 }

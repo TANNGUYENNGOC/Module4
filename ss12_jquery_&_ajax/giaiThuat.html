@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="" onclick="solution(3,22)"> kích zô đây</a>
+</body>
+<script>
+    function solution(left, right) {
+        let arr = [];
+        for(i=left; i<=right; i++){
+            if(soVong(i)){
+                arr.push(i);
+            }
+        }
+        alert(arr);
+        return arr;
+    }
+
+    function soVong(number){
+        let numArr = number.split(" ");
+        if(numArr[numArr.length-1] === numArr[0]){
+            return true;
+        } else{
+            return false;
+        }
+    }
+</script>
+</html>
