@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="row sticky-top" style="height: 10%;margin-bottom: 10px">
-        <div class="col-xl-8 " style="background-color: #0d6056;padding-top: 5px">
+        <div class="col-xl-6 " style="background-color: #0d6056;padding-top: 5px">
             <ul class="nav  justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link active" style="color: white" aria-current="page" href="/">Home</a>
@@ -56,24 +56,37 @@
                 </li>
             </ul>
         </div>
-        <div class="col-xl-4" style="background-color: #0d6056;padding-top: 10px">
-            <form class="d-flex" role="search" action="/customer?action=search" method="post">
-                <input style="height: 80%" class="form-control me-2" type="search" placeholder="Search"
-                       aria-label="Search" name="search">
+        <div class="col-xl-6" style="background-color: #0d6056;padding-top: 10px">
+            <form class="d-flex" role="search" action="/customer/search" method="get">
+                <div class="col-7 d-flex">
+                    <input  style="height: 80%" class="form-control me-2" type="search" placeholder="Tên khách hàng"
+                            aria-label="Search" name="name" th:value="${name}">
+                    <input style="height: 80%" class="form-control me-2" type="search" placeholder="Email"
+                           aria-label="Search" name="email" th:value="${email}">
+                </div>
+                <div class="form-control-sm me-2">
+<!--                    <select class="form-select form-select-lg mb-3" type="search"><label>Customer type</label>-->
+                        <select class="form-select"  name="customerTypeName">
+                        <option th:each="customerTypeName : ${customerTypeList}" th:value="${customerTypeName.name}"
+                                th:text="${customerTypeName.name}"></option>
+                    </select>
+                </div>
                 <button class="btn btn-outline-success" type="submit"
                         style="background-color: #5c636a;height: 80%;border: 2px solid yellow;color: white">Search
                 </button>
             </form>
+
         </div>
     </div>
     <div class="row">
-        <div class="col-8">
-            <h1>Danh sách khách hàng</h1>
+        <div class="col-2">
+            <a class="btn btn-warning text-center" href="/customer/create">Thêm mới khách hàng</a>
+        </div>
+        <div class="col-10">
+            <h1 class="text-center">Danh sách khách hàng</h1>
             <p style="color: red" th:text="${mess}"></p>
         </div>
-        <div class="col-4">
-            <a href="/customer/create">Thêm mới khách hàng</a>
-        </div>
+
     </div>
     <table class="table table-striped">
         <tr>

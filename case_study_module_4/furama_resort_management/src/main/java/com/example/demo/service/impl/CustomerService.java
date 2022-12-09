@@ -46,4 +46,9 @@ public class CustomerService implements ICustomerService {
         System.out.println(customerDTO1.getTypeCustomerName());
         return listCustomerDto;
     }
+
+    @Override
+    public Page<CustomerDTO1> listSearch(Pageable pageable, String name, String email, String customerTypeName) {
+        return customerRepository.listSearch(pageable   ,name,email,customerTypeName);
+    }
 }

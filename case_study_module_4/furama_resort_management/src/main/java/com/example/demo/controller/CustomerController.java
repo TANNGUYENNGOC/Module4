@@ -84,4 +84,19 @@ public class CustomerController {
         redirectAttributes.addFlashAttribute("mess", "Xóa thành công");
         return "redirect:/customer/list";
     }
+    @ModelAttribute("customerTypeList")
+    public Page<CustomerType> customerTypeList(Pageable pageable){
+        return customerTypeService.findAll(pageable);
+    }
+
+    @GetMapping("/search")
+    public String searchCustomer(@RequestParam(defaultValue = "") String name,
+                                 @RequestParam(defaultValue = "") String email,
+                                 @RequestParam(defaultValue = "") String customerTypeName,
+                                 @PageableDefault(page = 0, size = 3) Pageable pageable,
+                                 Model model){
+        Page<CustomerDTO1> customerDTO1s = customerService.listSearch(pageable,name,email,customerTypeName);
+        model.addAttribute("customers",customerDTO1s);
+        return "customer/list";
+    }
 }
