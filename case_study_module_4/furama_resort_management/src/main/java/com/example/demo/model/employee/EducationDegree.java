@@ -1,18 +1,18 @@
-package com.example.demo.model;
+package com.example.demo.model.employee;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Division {
+public class EducationDegree {
     @Id
     private int id;
     private String name;
 
-    public Division() {
+    public EducationDegree() {
     }
 
-    public Division(int id, String name) {
+    public EducationDegree(int id, String name) {
         this.id = id;
         this.name = name;
     }

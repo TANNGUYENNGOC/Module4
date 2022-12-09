@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.Customer;
-import com.example.demo.model.CustomerType;
+import com.example.demo.dto.CustomerDTO1;
+import com.example.demo.model.customer.Customer;
 import com.example.demo.repository.ICustomerRepository;
 import com.example.demo.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.Optional;
+
 @Service
 public class CustomerService implements ICustomerService {
     @Autowired
@@ -34,5 +35,15 @@ public class CustomerService implements ICustomerService {
     @Override
     public void remove(Integer id) {
         customerRepository.deleteById(id);
+    }
+
+
+    @Override
+    public Page<CustomerDTO1> listCustomerDto(Pageable pageable) {
+        Page<CustomerDTO1> listCustomerDto = customerRepository.listCustomerDto(pageable);
+        CustomerDTO1  customerDTO1 = listCustomerDto.getContent().get(0);
+        System.out.println("-----------------------------------------------------------------");
+        System.out.println(customerDTO1.getTypeCustomerName());
+        return listCustomerDto;
     }
 }

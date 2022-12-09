@@ -1,14 +1,17 @@
-package com.example.demo.model;
+package com.example.demo.model.user_role;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.Set;
 
 @Entity
 public class User {
     @Id
     private String username;
     private String passworld;
-
+    @ManyToMany
+    private Set<Role> roleId;
     public User() {
     }
 

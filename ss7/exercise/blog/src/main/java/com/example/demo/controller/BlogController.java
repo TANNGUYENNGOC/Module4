@@ -68,7 +68,7 @@ public class BlogController {
         return "blog/delete";
     }
     @PostMapping("/delete")
-    private String deleteBlog(Blog blog, RedirectAttributes redirectAttributes){
+    private String deleteBlog(Blog blog , RedirectAttributes redirectAttributes){
         blogService.remove(blog.getId());
         redirectAttributes.addFlashAttribute("mess","Xóa thành công");
         return "redirect:/blog/";

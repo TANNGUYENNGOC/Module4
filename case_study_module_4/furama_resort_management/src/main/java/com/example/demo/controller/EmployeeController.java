@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Employee;
+import com.example.demo.model.employee.Employee;
 import com.example.demo.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

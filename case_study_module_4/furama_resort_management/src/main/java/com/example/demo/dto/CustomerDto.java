@@ -1,15 +1,13 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.CustomerType;
+import com.example.demo.model.customer.CustomerType;
 
 public class CustomerDto {
-     private int id;
+    private int id;
 
     private CustomerType customerType;
-
     private String name;
     private String dateOfBirth;
-
     private boolean gender;
     private String idCard;
     private String phoneNumber;

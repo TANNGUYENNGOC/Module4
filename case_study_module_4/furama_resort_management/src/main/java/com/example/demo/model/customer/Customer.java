@@ -1,9 +1,6 @@
-package com.example.demo.model;
+package com.example.demo.model.customer;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Customer {

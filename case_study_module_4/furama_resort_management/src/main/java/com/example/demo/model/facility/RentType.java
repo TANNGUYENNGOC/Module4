@@ -1,23 +1,20 @@
-package com.example.demo.model;
+package com.example.demo.model.facility;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class CustomerType {
+public class RentType {
     @Id
     private int id;
-
     private String name;
 
-
-
-    public CustomerType(int id, String name) {
-        this.id = id;
-        this.name = name;
+    public RentType() {
     }
 
-    public CustomerType() {
+    public RentType(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public int getId() {
@@ -35,6 +32,4 @@ public class CustomerType {
     public void setName(String name) {
         this.name = name;
     }
-
-
 }

@@ -1,4 +1,6 @@
-package com.example.demo.model;
+package com.example.demo.model.employee;
+
+import com.example.demo.model.user_role.User;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
