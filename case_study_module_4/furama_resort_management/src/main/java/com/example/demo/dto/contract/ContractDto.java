@@ -1,31 +1,26 @@
-package com.example.demo.model.contract;
+package com.example.demo.dto.contract;
 
 import com.example.demo.model.customer.Customer;
 import com.example.demo.model.employee.Employee;
 import com.example.demo.model.facility.Facility;
 
-import javax.persistence.*;
+public class ContractDto {
 
-@Entity
-public class Contract {
-    @Id
     private int id;
-    @Column(columnDefinition = "DATE")
     private String startDate;
-    @Column(columnDefinition = "DATE")
     private String endDate;
     private double deposit;
-    @ManyToOne
+
     private Employee employee;
-    @ManyToOne
+
     private Customer customer;
-    @ManyToOne
+
     private Facility facility;
 
-    public Contract() {
+    public ContractDto() {
     }
 
-    public Contract(String startDate, String endDate, double deposit, Employee employee, Customer customer, Facility facility) {
+    public ContractDto(String startDate, String endDate, double deposit, Employee employee, Customer customer, Facility facility) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.deposit = deposit;
@@ -34,7 +29,7 @@ public class Contract {
         this.facility = facility;
     }
 
-    public Contract(int id, String startDate, String endDate, double deposit, Employee employee, Customer customer, Facility facility) {
+    public ContractDto(int id, String startDate, String endDate, double deposit, Employee employee, Customer customer, Facility facility) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;

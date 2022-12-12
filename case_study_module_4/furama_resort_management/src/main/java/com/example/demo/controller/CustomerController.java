@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.CustomerDTO1;
-import com.example.demo.dto.CustomerDto;
+import com.example.demo.dto.customer.CustomerDTO1;
+import com.example.demo.dto.customer.CustomerDto;
 import com.example.demo.model.customer.Customer;
 import com.example.demo.model.customer.CustomerType;
 import com.example.demo.service.ICustomerService;

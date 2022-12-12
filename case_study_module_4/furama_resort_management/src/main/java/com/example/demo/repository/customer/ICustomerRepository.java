@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.example.demo.repository.customer;
 
-import com.example.demo.dto.CustomerDTO1;
+import com.example.demo.dto.customer.CustomerDTO1;
 import com.example.demo.model.customer.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

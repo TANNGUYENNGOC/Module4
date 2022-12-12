@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package com.example.demo.dto.customer;
 
 import com.example.demo.model.customer.CustomerType;
 

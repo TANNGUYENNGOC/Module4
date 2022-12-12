@@ -1,20 +1,15 @@
-package com.example.demo.model.facility;
+package com.example.demo.dto.facility;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import com.example.demo.model.facility.FacilityType;
+import com.example.demo.model.facility.RentType;
 
-@Entity
-public class Facility {
-    @Id
+public class FacilityDto {
     private int id;
     private String name;
     private int area;
     private double cost;
     private int maxPeople;
-    @ManyToOne
     private RentType rentType;
-    @ManyToOne
     private FacilityType facilityType;
     private String standardRoom;
     private String descriptionOtherConvenience;
@@ -22,11 +17,10 @@ public class Facility {
     private int numberOfFloors;
     private String facilityFree;
 
-
-    public Facility() {
+    public FacilityDto() {
     }
 
-    public Facility(String name, int area, double cost, int maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors, String facilityFree) {
+    public FacilityDto(String name, int area, double cost, int maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors, String facilityFree) {
         this.name = name;
         this.area = area;
         this.cost = cost;
@@ -40,7 +34,7 @@ public class Facility {
         this.facilityFree = facilityFree;
     }
 
-    public Facility(int id, String name, int area, double cost, int maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors, String facilityFree) {
+    public FacilityDto(int id, String name, int area, double cost, int maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors, String facilityFree) {
         this.id = id;
         this.name = name;
         this.area = area;
@@ -54,7 +48,8 @@ public class Facility {
         this.numberOfFloors = numberOfFloors;
         this.facilityFree = facilityFree;
     }
-    public Facility(String name, int area, double cost, int maxPeople, RentType rentType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloos) {
+
+    public FacilityDto(String name, int area, double cost, int maxPeople, RentType rentType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors) {
         this.name = name;
         this.area = area;
         this.cost = cost;
@@ -63,10 +58,10 @@ public class Facility {
         this.standardRoom = standardRoom;
         this.descriptionOtherConvenience = descriptionOtherConvenience;
         this.poolArea = poolArea;
-        this.numberOfFloors = numberOfFloos;
+        this.numberOfFloors = numberOfFloors;
     }
 
-    public Facility(String name, int area, double cost, int maxPeople, RentType rentType, String standardRoom, String descriptionOtherConvenience, int numberOfFloos) {
+    public FacilityDto(String name, int area, double cost, int maxPeople, RentType rentType, String standardRoom, String descriptionOtherConvenience, int numberOfFloors) {
         this.name = name;
         this.area = area;
         this.cost = cost;
@@ -74,10 +69,10 @@ public class Facility {
         this.rentType = rentType;
         this.standardRoom = standardRoom;
         this.descriptionOtherConvenience = descriptionOtherConvenience;
-        this.numberOfFloors = numberOfFloos;
+        this.numberOfFloors = numberOfFloors;
     }
 
-    public Facility(String name, int area, double cost, int maxPeople, RentType rentType, String facilityFree) {
+    public FacilityDto(String name, int area, double cost, int maxPeople, RentType rentType, String facilityFree) {
         this.name = name;
         this.area = area;
         this.cost = cost;
@@ -86,7 +81,7 @@ public class Facility {
         this.facilityFree = facilityFree;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
@@ -170,8 +165,8 @@ public class Facility {
         return numberOfFloors;
     }
 
-    public void setNumberOfFloors(int numberOfFloos) {
-        this.numberOfFloors = numberOfFloos;
+    public void setNumberOfFloors(int numberOfFloors) {
+        this.numberOfFloors = numberOfFloors;
     }
 
     public String getFacilityFree() {

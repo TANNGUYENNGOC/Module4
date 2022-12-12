@@ -9,7 +9,7 @@ public class ContractDetail {
     @Id
     private int id;
     @ManyToOne
-    private Contract contractId;
+    private Contract contract;
     @ManyToOne
     private AttachFacility attachFacility;
     private int quantity;
@@ -17,8 +17,8 @@ public class ContractDetail {
     public ContractDetail() {
     }
 
-    public ContractDetail(Contract contractId, AttachFacility attachFacility, int quantity) {
-        this.contractId = contractId;
+    public ContractDetail(Contract contract, AttachFacility attachFacility, int quantity) {
+        this.contract = contract;
         this.attachFacility = attachFacility;
         this.quantity = quantity;
     }
@@ -31,12 +31,12 @@ public class ContractDetail {
         this.id = id;
     }
 
-    public Contract getContractId() {
-        return contractId;
+    public Contract getContract() {
+        return contract;
     }
 
-    public void setContractId(Contract contractId) {
-        this.contractId = contractId;
+    public void setContract(Contract contractId) {
+        this.contract = contractId;
     }
 
     public AttachFacility getAttachFacility() {

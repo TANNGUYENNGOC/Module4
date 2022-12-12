@@ -1,8 +1,8 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dto.CustomerDTO1;
+import com.example.demo.dto.customer.CustomerDTO1;
 import com.example.demo.model.customer.Customer;
-import com.example.demo.repository.ICustomerRepository;
+import com.example.demo.repository.customer.ICustomerRepository;
 import com.example.demo.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
