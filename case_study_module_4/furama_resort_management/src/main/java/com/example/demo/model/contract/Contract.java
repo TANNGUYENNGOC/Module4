@@ -44,6 +44,10 @@ public class Contract {
         this.facility = facility;
     }
 
+    public Contract(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

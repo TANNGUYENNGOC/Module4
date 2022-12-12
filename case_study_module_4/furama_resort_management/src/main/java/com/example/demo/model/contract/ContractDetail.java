@@ -23,6 +23,10 @@ public class ContractDetail {
         this.quantity = quantity;
     }
 
+    public ContractDetail(Contract contract) {
+        this.contract = contract;
+    }
+
     public int getId() {
         return id;
     }

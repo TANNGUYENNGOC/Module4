@@ -12,13 +12,13 @@
     <div class="col-3"></div>
     <div class="col-6">
         <form style="height: 300px" method="post" th:object="${contractDetail}" action="/contract/createContractDetail">
-            <div class="mb-3">
+            <div hidden class="mb-3">
                 <label for="exampleInputEmail8" class="form-label">Contract Id</label>
-                <input type="text" class="form-control" id="exampleInputEmail8" aria-describedby="emailHelp" th:field="*{id}">
+                <input type="text" class="form-control" id="exampleInputEmail8" aria-describedby="emailHelp" th:value="*{contract.id}" th:field="*{contract}">
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail7" class="form-label">Tên dịch vụ đi kèm</label>
-                <select id="exampleInputEmail7" th:field="*{contract}" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                <select id="exampleInputEmail7" th:field="*{attachFacility}" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                     <option th:each="attachFacility:${attachFacilityList}"
                             th:text="${attachFacility.name}" th:value="${attachFacility.id}">
                     </option>
@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail11" class="form-label">Số lượng</label>
-                <input type="text" class="form-control" id="exampleInputEmail11" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="exampleInputEmail11" aria-describedby="emailHelp" th:field="*{quantity}">
             </div>
             <a class="btn btn-secondary" href="/contract/list">Hủy bỏ</a>
             <button type="submit" class="btn btn-primary">Tạo hợp đồng</button>

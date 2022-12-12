@@ -64,14 +64,16 @@ public class ContractController {
 
     @GetMapping("/{id}/createContractDetail")
     public String showFormAddContractDetai(Model model, Pageable pageable, @PathVariable("id") int id){
-        model.addAttribute("contractDetail",new ContractDetail());
+        Contract contract = new Contract(id);
+        ContractDetail contractDetail = new ContractDetail(contract);
+        model.addAttribute("contractDetail",contractDetail);
         model.addAttribute("attachFacilityList",attachFacilityService.findAll(pageable));
-        model.addAttribute("id",id);
         return "contract/addContractDetail";
     }
     @PostMapping("/createContractDetail")
     public String createContractDetail(@ModelAttribute("contractDetail") ContractDetail contractDetail,RedirectAttributes redirectAttributes){
         contractDetailService.save(contractDetail);
+        redirectAttributes.addFlashAttribute("mess","thêm mới thành công");
         return "redirect:/contract/list";
     }
 }
