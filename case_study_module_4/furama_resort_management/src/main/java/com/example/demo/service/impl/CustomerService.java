@@ -49,6 +49,6 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Page<CustomerDTO1> listSearch(Pageable pageable, String name, String email, String customerTypeName) {
-        return customerRepository.listSearch(pageable   ,name,email,customerTypeName);
+        return customerRepository.listSearch(pageable ,name,email,customerTypeName);
     }
 }

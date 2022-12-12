@@ -23,10 +23,12 @@
             <div class="mb-3">
                 <label for="exampleInputEmail2" class="form-label">Tên khách hàng</label>
                 <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" th:field="*{name}">
+                <p style="color: red" th:errors="*{name}"></p>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail3" class="form-label">Ngày sinh</label>
                 <input type="date" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" th:field="*{dateOfBirth}">
+                <p style="color: red" th:errors="*{dateOfBirth}"></p>
             </div>
             <div class="mb-3">
                 <div class="form-check">
@@ -45,18 +47,22 @@
             <div class="mb-3">
                 <label for="exampleInputEmail5" class="form-label">Số CMND</label>
                 <input type="text" class="form-control" id="exampleInputEmail5" aria-describedby="emailHelp" th:field="*{idCard}">
+                <p style="color: red" th:errors="*{idCard}"></p>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail6" class="form-label">Số điện thoại</label>
                 <input type="text" class="form-control" id="exampleInputEmail6" aria-describedby="emailHelp" th:field="*{phoneNumber}">
+                <p style="color: red" th:errors="*{phoneNumber}"></p>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail7" class="form-label">Email</label>
                 <input type="text" class="form-control" id="exampleInputEmail7" aria-describedby="emailHelp" th:field="*{email}">
+                <p style="color: red" th:errors="*{email}"></p>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail8" class="form-label">Địa chỉ</label>
                 <input type="text" class="form-control" id="exampleInputEmail8" aria-describedby="emailHelp" th:field="*{address}">
+                <p style="color: red" th:errors="*{address}"></p>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

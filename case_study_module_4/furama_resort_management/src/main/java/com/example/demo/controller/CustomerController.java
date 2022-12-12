@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -41,7 +43,16 @@ public class CustomerController {
     }
 
     @PostMapping("/create")
-    public String createCustomer(@ModelAttribute("customerDto") CustomerDto customerDto, RedirectAttributes redirectAttributes) {
+    public String createCustomer(@Validated @ModelAttribute("customerDto") CustomerDto customerDto
+            , BindingResult bindingResult
+            , RedirectAttributes redirectAttributes
+            , Model model
+            , Pageable pageable) {
+        new CustomerDto().validate(customerDto, bindingResult);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("listCustomerType", customerTypeService.findAll(pageable));
+            return "customer/create";
+        }
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDto, customer);
         customerService.save(customer);
@@ -84,8 +95,9 @@ public class CustomerController {
         redirectAttributes.addFlashAttribute("mess", "Xóa thành công");
         return "redirect:/customer/list";
     }
+
     @ModelAttribute("customerTypeList")
-    public Page<CustomerType> customerTypeList(Pageable pageable){
+    public Page<CustomerType> customerTypeList(Pageable pageable) {
         return customerTypeService.findAll(pageable);
     }
 
@@ -94,9 +106,9 @@ public class CustomerController {
                                  @RequestParam(defaultValue = "") String email,
                                  @RequestParam(defaultValue = "") String customerTypeName,
                                  @PageableDefault(page = 0, size = 3) Pageable pageable,
-                                 Model model){
-        Page<CustomerDTO1> customerDTO1s = customerService.listSearch(pageable,name,email,customerTypeName);
-        model.addAttribute("customers",customerDTO1s);
+                                 Model model) {
+        Page<CustomerDTO1> customerDTO1s = customerService.listSearch(pageable, name, email, customerTypeName);
+        model.addAttribute("customers", customerDTO1s);
         return "customer/list";
     }
 }
