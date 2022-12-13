@@ -46,7 +46,7 @@
                     <a class="nav-link" href="/customer/list" style="color: white">Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/facility/list" style="color: white">Service</a>
+                    <a class="nav-link" href="/facility/" style="color: white">Service</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/contract/list" style="color: white">Contract</a>
@@ -54,28 +54,45 @@
             </ul>
         </div>
         <div class="col-xl-4" style="background-color: #0d6056;padding-top: 10px">
-            <form class="d-flex" role="search" action="/customer?action=search" method="post">
-                <input style="height: 80%" class="form-control me-2" type="search" placeholder="Search"
-                       aria-label="Search" name="search">
+            <form class="d-flex" role="search" action="/facility" method="get">
+                <div class="col-7 d-flex">
+                    <input  style="height: 80%" class="form-control me-2" type="search" placeholder="Tên dịch vụ"
+                            aria-label="Search" name="name" >
+                </div>
+                <div class="form-control-sm me-2">
+                    <select class="form-select"  name="facilityType">
+                        <option th:value="${''}">Facility Type</option>
+                        <option th:each="facilityType : ${listFacilityType}"
+                                th:value="${facilityType.id}"
+                                th:text="${facilityType.name}"></option>
+                    </select>
+                </div>
                 <button class="btn btn-outline-success" type="submit"
                         style="background-color: #5c636a;height: 80%;border: 2px solid yellow;color: white">Search
                 </button>
             </form>
+
         </div>
     </div>
     <div class="row">
+<!--        <div class="col-2">-->
+<!--            <li class="nav-item dropdown">-->
+<!--                <a class="nav-link dropdown-toggle btn btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                    Thêm mới dịch vụ-->
+<!--                </a>-->
+<!--                <ul class="dropdown-menu">-->
+<!--                    <li><a class="dropdown-item" href="/facility/createVilla">Villa</a></li>-->
+<!--                    <li><a class="dropdown-item" href="/facility/createHouse">House</a></li>-->
+<!--                    <li><a class="dropdown-item" href="/facility/createRoom">Room</a></li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--        </div>-->
         <div class="col-2">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle btn btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Thêm mới dịch vụ
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/facility/createVilla">Villa</a></li>
-                    <li><a class="dropdown-item" href="/facility/createHouse">House</a></li>
-                    <li><a class="dropdown-item" href="/facility/createRoom">Room</a></li>
-                </ul>
-            </li>
+            <a class="btn btn-warning" href="/facility/create">
+                Thêm mới dịch vụ
+            </a>
         </div>
+
         <div class="col-10">
             <h1 class="text-center">Danh sách dịch vụ</h1>
             <p style="color: red" th:text="${mess}"></p>
@@ -119,11 +136,12 @@
             </tr>
         </th:block>
     </table>
-    <a class="btn btn-success" th:href="@{/facility/list(page=${list.number - 1})}" th:if="${list.hasPrevious()}">Previous</a>
+    <a class="btn btn-success" th:href="@{/facility/(page=${list.number - 1},name=${name},facilityType=${facilityType})}" th:if="${list.hasPrevious()}">Previous</a>
     <span th:text="${list.number+1}+'/'+${list.totalPages}"></span>
-    <a class="btn btn-success" th:href="@{/facility/list(page=${list.number + 1})}" th:if="${list.hasNext()}">Next</a>
+    <a class="btn btn-success" th:href="@{/facility/(page=${list.number + 1},name=${name},facilityType=${facilityType})}" th:if="${list.hasNext()}">Next</a>
 </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </html>

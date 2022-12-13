@@ -16,6 +16,7 @@ public class FacilityDto {
     private double poolArea;
     private int numberOfFloors;
     private String facilityFree;
+    private boolean flag = false;
 
     public FacilityDto() {
     }
@@ -79,6 +80,22 @@ public class FacilityDto {
         this.maxPeople = maxPeople;
         this.rentType = rentType;
         this.facilityFree = facilityFree;
+    }
+
+    public FacilityDto(int id, String name, int area, double cost, int maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors, String facilityFree, boolean flag) {
+        this.id = id;
+        this.name = name;
+        this.area = area;
+        this.cost = cost;
+        this.maxPeople = maxPeople;
+        this.rentType = rentType;
+        this.facilityType = facilityType;
+        this.standardRoom = standardRoom;
+        this.descriptionOtherConvenience = descriptionOtherConvenience;
+        this.poolArea = poolArea;
+        this.numberOfFloors = numberOfFloors;
+        this.facilityFree = facilityFree;
+        this.flag = flag;
     }
 
     public int getId() {
@@ -175,5 +192,13 @@ public class FacilityDto {
 
     public void setFacilityFree(String facilityFree) {
         this.facilityFree = facilityFree;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }

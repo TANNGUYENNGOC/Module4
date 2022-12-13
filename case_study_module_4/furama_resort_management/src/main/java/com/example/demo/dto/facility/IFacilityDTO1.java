@@ -1,10 +1,8 @@
 package com.example.demo.dto.facility;
 
-import com.example.demo.model.facility.Facility;
 import com.example.demo.model.facility.FacilityType;
 import com.example.demo.model.facility.RentType;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
 
 public interface IFacilityDTO1 {
      int getId();

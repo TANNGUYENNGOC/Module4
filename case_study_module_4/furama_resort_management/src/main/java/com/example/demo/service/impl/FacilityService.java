@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.dto.facility.IFacilityDTO1;
 import com.example.demo.model.facility.Facility;
 import com.example.demo.repository.facility.IFacilityRepository;
 import com.example.demo.service.IFacilityService;
@@ -39,4 +40,16 @@ public class FacilityService implements IFacilityService {
     public List<Facility> findAll() {
         return facilityRepository.findAll();
     }
+
+    @Override
+    public Page<Facility> searchListFacility(String name, String facilityType, Pageable pageable) {
+        return facilityRepository.searchListFacility(name,facilityType,pageable);
+    }
+
+    @Override
+    public void removeFlagFacility(int id) {
+        facilityRepository.removeFlagFacility(id);
+    }
+
+
 }

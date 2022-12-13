@@ -21,7 +21,7 @@ public class Facility {
     private double poolArea;
     private int numberOfFloors;
     private String facilityFree;
-
+    private boolean flag = false;
 
     public Facility() {
     }
@@ -66,6 +66,7 @@ public class Facility {
         this.numberOfFloors = numberOfFloos;
     }
 
+
     public Facility(String name, int area, double cost, int maxPeople, RentType rentType, String standardRoom, String descriptionOtherConvenience, int numberOfFloos) {
         this.name = name;
         this.area = area;
@@ -84,6 +85,22 @@ public class Facility {
         this.maxPeople = maxPeople;
         this.rentType = rentType;
         this.facilityFree = facilityFree;
+    }
+
+    public Facility(int id, String name, int area, double cost, int maxPeople, RentType rentType, FacilityType facilityType, String standardRoom, String descriptionOtherConvenience, double poolArea, int numberOfFloors, String facilityFree, boolean flag) {
+        this.id = id;
+        this.name = name;
+        this.area = area;
+        this.cost = cost;
+        this.maxPeople = maxPeople;
+        this.rentType = rentType;
+        this.facilityType = facilityType;
+        this.standardRoom = standardRoom;
+        this.descriptionOtherConvenience = descriptionOtherConvenience;
+        this.poolArea = poolArea;
+        this.numberOfFloors = numberOfFloors;
+        this.facilityFree = facilityFree;
+        this.flag = flag;
     }
 
     public int getId(){
@@ -180,5 +197,13 @@ public class Facility {
 
     public void setFacilityFree(String facilityFree) {
         this.facilityFree = facilityFree;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }

@@ -18,6 +18,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
@@ -26,6 +28,10 @@ public class CustomerController {
     @Autowired
     ICustomerTypeService customerTypeService;
 
+    @ModelAttribute("name")
+    public Page<CustomerType> getsListCustomerType(Pageable pageable){
+        return customerTypeService.findAll(pageable);
+    }
     @GetMapping("/list")
     private String showListCustomer(Model model, @PageableDefault(page = 0, size = 3) Pageable pageable) {
         Page<CustomerDTO1> customerDTO1s = customerService.listCustomerDto(pageable);
@@ -91,7 +97,7 @@ public class CustomerController {
 
     @PostMapping("/remove")
     public String removeCustomer(@RequestParam("id") int id, RedirectAttributes redirectAttributes) {
-        customerService.remove(id);
+        customerService.removeFlagCustomer(id);
         redirectAttributes.addFlashAttribute("mess", "Xóa thành công");
         return "redirect:/customer/list";
     }

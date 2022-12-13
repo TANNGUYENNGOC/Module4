@@ -40,15 +40,16 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public Page<CustomerDTO1> listCustomerDto(Pageable pageable) {
-        Page<CustomerDTO1> listCustomerDto = customerRepository.listCustomerDto(pageable);
-        CustomerDTO1  customerDTO1 = listCustomerDto.getContent().get(0);
-        System.out.println("-----------------------------------------------------------------");
-        System.out.println(customerDTO1.getTypeCustomerName());
-        return listCustomerDto;
+        return customerRepository.listCustomerDto(pageable);
     }
 
     @Override
     public Page<CustomerDTO1> listSearch(Pageable pageable, String name, String email, String customerTypeName) {
         return customerRepository.listSearch(pageable ,name,email,customerTypeName);
+    }
+
+    @Override
+    public void removeFlagCustomer(int id) {
+        customerRepository.removeFlagCustomer(id);
     }
 }

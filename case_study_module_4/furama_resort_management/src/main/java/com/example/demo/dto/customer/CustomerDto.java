@@ -20,6 +20,7 @@ public class CustomerDto implements Validator {
     @Email
     private String email;
     private String address;
+    private boolean flag;
 
     public CustomerDto() {
     }
@@ -45,6 +46,19 @@ public class CustomerDto implements Validator {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
+    }
+
+    public CustomerDto(int id, CustomerType customerType, String name, String dateOfBirth, boolean gender, String idCard, String phoneNumber, @Email String email, String address, boolean flag) {
+        this.id = id;
+        this.customerType = customerType;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.idCard = idCard;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.flag = flag;
     }
 
     public int getId() {
@@ -119,6 +133,14 @@ public class CustomerDto implements Validator {
         this.address = address;
     }
 
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
     @Override
     public boolean supports(Class<?> clazz) {
         return false;
@@ -136,7 +158,7 @@ public class CustomerDto implements Validator {
 
         //Validate age of birth day
         String birthdayVal = customerDto.getDateOfBirth();
-        if (birthdayVal.matches("dd/mm/yyyy")) {
+        if (birthdayVal.matches("")) {
             errors.rejectValue("dateOfBirth", "dateOfBirth", "Vui lòng chọn ngày sinh");
         } else {
             LocalDate dayOfBirth = LocalDate.parse(birthdayVal);

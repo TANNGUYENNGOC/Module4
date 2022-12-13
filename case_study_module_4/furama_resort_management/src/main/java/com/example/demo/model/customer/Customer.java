@@ -20,6 +20,7 @@ public class Customer {
     private String phoneNumber;
     private String email;
     private String address;
+    private boolean flag;
 
     public Customer() {
     }
@@ -45,6 +46,19 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
+    }
+
+    public Customer(int id, CustomerType customerType, String name, String dateOfBirth, boolean gender, String idCard, String phoneNumber, String email, String address, boolean flag) {
+        this.id = id;
+        this.customerType = customerType;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.idCard = idCard;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.flag = flag;
     }
 
     public int getId() {
@@ -117,5 +131,13 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 }

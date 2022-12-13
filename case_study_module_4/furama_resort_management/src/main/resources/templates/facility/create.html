@@ -9,16 +9,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-<div class="row"><h1 class="text-center">Chỉnh sửa dịch vụ</h1></div>
+<div class="row"><h1 class="text-center">Thêm mới dịch vụ</h1></div>
 <div class="row">
     <div class="col-3"></div>
     <div class="col-6">
-        <form id="facilityType" style="height: 300px" th:object="${facilityDto}" action="/facility/updateFacility" method="post">
-            <div class="mb-3">
-                <label for="exampleInputEmail115" class="form-label">Tên dịch vụ</label>
-                <input type="text" class="form-control" id="exampleInputEmail115" aria-describedby="emailHelp"
-                       th:field="*{id}">
-            </div>
+        <form id="facilityType" style="height: 300px" th:object="${facilityDTO}" action="/facility/createFacility" method="post">
             <div class="mb-3">
                 <label for="exampleInputEmail2" class="form-label">Tên dịch vụ</label>
                 <input type="text" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp"
@@ -97,9 +92,9 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
 <script>
-    function selecFacilityType(type) {
-        let selectType = type.value;
-        switch (selectType) {
+   function selecFacilityType(type) {
+       let selectType = type.value;
+       switch (selectType) {
             case "1":
                 document.getElementById("standardRoom").style.display = "block";
                 document.getElementById("descriptionOtherConvenience").style.display = "block";
@@ -107,28 +102,28 @@
                 document.getElementById("numberOfFloors").style.display = "block";
                 document.getElementById("facilityFree").style.display = "none";
                 break;
-            case "2":
-                document.getElementById("standardRoom").style.display = "block";
-                document.getElementById("descriptionOtherConvenience").style.display = "block";
-                document.getElementById("poolArea").style.display = "none";
-                document.getElementById("numberOfFloors").style.display = "block";
-                document.getElementById("facilityFree").style.display = "none";
-                break;
-            case "3":
-                document.getElementById("standardRoom").style.display = "none";
-                document.getElementById("descriptionOtherConvenience").style.display = "none";
-                document.getElementById("poolArea").style.display = "none";
-                document.getElementById("numberOfFloors").style.display = "none";
-                document.getElementById("facilityFree").style.display = "block";
-                break
-            default:
-                document.getElementById("standardRoom").style.display = "none";
-                document.getElementById("descriptionOtherConvenience").style.display = "none";
-                document.getElementById("poolArea").style.display = "none";
-                document.getElementById("numberOfFloors").style.display = "none";
-                document.getElementById("facilityFree").style.display = "none";
-        }
+           case "2":
+               document.getElementById("standardRoom").style.display = "block";
+               document.getElementById("descriptionOtherConvenience").style.display = "block";
+               document.getElementById("poolArea").style.display = "none";
+               document.getElementById("numberOfFloors").style.display = "block";
+               document.getElementById("facilityFree").style.display = "none";
+               break;
+           case "3":
+               document.getElementById("standardRoom").style.display = "none";
+               document.getElementById("descriptionOtherConvenience").style.display = "none";
+               document.getElementById("poolArea").style.display = "none";
+               document.getElementById("numberOfFloors").style.display = "none";
+               document.getElementById("facilityFree").style.display = "block";
+               break
+           default:
+               document.getElementById("standardRoom").style.display = "none";
+               document.getElementById("descriptionOtherConvenience").style.display = "none";
+               document.getElementById("poolArea").style.display = "none";
+               document.getElementById("numberOfFloors").style.display = "none";
+               document.getElementById("facilityFree").style.display = "none";
+       }
 
-    }
+   }
 </script>
 </html>
