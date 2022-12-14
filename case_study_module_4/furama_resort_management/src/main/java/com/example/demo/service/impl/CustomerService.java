@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.dto.attach_facility.IAttachFacilityCustomer;
+import com.example.demo.dto.attach_facility.IAttachFacilityDTO;
 import com.example.demo.dto.customer.CustomerDTO1;
 import com.example.demo.model.customer.Customer;
 import com.example.demo.repository.customer.ICustomerRepository;
@@ -50,6 +52,16 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void removeFlagCustomer(int id) {
-        customerRepository.removeFlagCustomer(id);
+        customerRepository.removeFlagCustomer(id    );
+    }
+
+    @Override
+    public Page<CustomerDTO1> listCustomerJoinContract(Pageable pageable) {
+        return customerRepository.listCustomerJoinContract(pageable);
+    }
+
+    @Override
+    public Page<IAttachFacilityCustomer> listAttachFacility(int id, Pageable pageable) {
+        return customerRepository.listAttachFacility(id,pageable);
     }
 }

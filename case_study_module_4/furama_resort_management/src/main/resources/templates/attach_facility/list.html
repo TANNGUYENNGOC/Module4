@@ -65,8 +65,8 @@
                            aria-label="Search" name="email" th:value="${email}">
                 </div>
                 <div class="form-control-sm me-2">
-<!--                    <select class="form-select form-select-lg mb-3" type="search"><label>Customer type</label>-->
-                        <select class="form-select"  name="customerTypeName">
+                    <!--                    <select class="form-select form-select-lg mb-3" type="search"><label>Customer type</label>-->
+                    <select class="form-select"  name="customerTypeName">
                         <option th:each="customerTypeName : ${customerTypeList}" th:value="${customerTypeName.name}"
                                 th:text="${customerTypeName.name}"></option>
                     </select>
@@ -79,51 +79,31 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-2">
-            <a class="btn btn-success text-center" href="/customer/listCustomerJoinContract">Khách hàng đang sử dụng dịch vụ </a>
-        </div>
-        <div class="col-8">
-            <h1 class="text-center">Danh sách khách hàng</h1>
+        <div class="col-12">
+            <h1 class="text-center">Danh sách dịch vụ đi kèm của khách hàng</h1>
             <p style="color: red" th:text="${mess}"></p>
         </div>
-        <div class="col-2">
-            <a class="btn btn-warning text-center" href="/customer/create">Thêm mới khách hàng</a>
-        </div>
-
     </div>
     <table class="table table-striped">
         <tr>
-            <th scope="col">Kiểu khách hàng</th>
-            <th scope="col">Tên khách hàng</th>
-            <th scope="col">Ngày sinh</th>
-            <th scope="col">Giới tính</th>
-            <th scope="col">Số CMND</th>
-            <th scope="col">Số điện thoại</th>
-            <th scope="col">Email</th>
-            <th scope="col">Địa chỉ</th>
-            <th scope="col">Chỉnh sửa</th>
-            <th scope="col">Xóa</th>
+            <th scope="col">Tên dịch vụ đi kèm</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Đơn vị</th>
+            <th scope="col">Trạng thái</th>
         </tr>
-        <th:block th:each="customer : ${customers}">
+        <th:block th:each="attachfacility : ${list}">
             <tr>
-                <td th:text="${customer.getTypeCustomerName()}"></td>
-                <td th:text="${customer.getName()}"></td>
-                <td th:text="${customer.getDateOfBirth()}"></td>
-                <td th:if="${customer.isGender()}" th:text="Nam"></td>
-                <td th:if="${customer.isGender()}==false" th:text="Nữ"></td>
-                <td th:text="${customer.getIdCard()}"></td>
-                <td th:text="${customer.getPhoneNumber()}"></td>
-                <td th:text="${customer.getEmail()}"></td>
-                <td th:text="${customer.getAddress()}"></td>
-                <td><a class="btn btn-outline-success" th:href="@{/customer/{id}/update(id=${customer.getId()})}">Sửa</a></td>
-                <td><a class="btn btn-outline-success" th:href="@{/customer/{id}/remove(id=${customer.getId()})}">Xóa</a></td>
+                <td th:text="${attachfacility.getName()}"></td>
+                <td th:text="${attachfacility.getCost()}"></td>
+                <td th:text="${attachfacility.getUnit()}"></td>
+                <td th:text="${attachfacility.getStatus()}"></td>
             </tr>
         </th:block>
     </table>
-    <a th:href="@{/customer/list(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}"
-       class="btn btn-success">Previous</a>
-    <span th:text="${customers.number+1}+'/'+${customers.totalPages}"></span>
-    <a th:href="@{/customer/list(page=${customers.number + 1})}" th:if="${customers.hasNext()}" class="btn btn-success">Next</a>
+<!--    <a th:href="@{/contract/list(page=${list.number - 1})}" th:if="${list.hasPrevious()}"-->
+<!--       class="btn btn-success">Previous</a>-->
+<!--    <span th:text="${list.number+1}+'/'+${list.totalPages}"></span>-->
+<!--    <a th:href="@{/contract/list(page=${list.number + 1})}" th:if="${list.hasNext()}" class="btn btn-success">Next</a>-->
 </div>
 </body>
 <!-- JavaScript Bundle with Popper -->

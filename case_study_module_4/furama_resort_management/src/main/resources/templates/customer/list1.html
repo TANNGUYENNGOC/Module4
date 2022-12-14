@@ -65,8 +65,8 @@
                            aria-label="Search" name="email" th:value="${email}">
                 </div>
                 <div class="form-control-sm me-2">
-<!--                    <select class="form-select form-select-lg mb-3" type="search"><label>Customer type</label>-->
-                        <select class="form-select"  name="customerTypeName">
+                    <!--                    <select class="form-select form-select-lg mb-3" type="search"><label>Customer type</label>-->
+                    <select class="form-select"  name="customerTypeName">
                         <option th:each="customerTypeName : ${customerTypeList}" th:value="${customerTypeName.name}"
                                 th:text="${customerTypeName.name}"></option>
                     </select>
@@ -79,15 +79,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-2">
-            <a class="btn btn-success text-center" href="/customer/listCustomerJoinContract">Khách hàng đang sử dụng dịch vụ </a>
-        </div>
-        <div class="col-8">
-            <h1 class="text-center">Danh sách khách hàng</h1>
-            <p style="color: red" th:text="${mess}"></p>
-        </div>
-        <div class="col-2">
-            <a class="btn btn-warning text-center" href="/customer/create">Thêm mới khách hàng</a>
+        <div class="col-12">
+            <h1>Danh sách dịch vụ đi kèm</h1>
         </div>
 
     </div>
@@ -101,8 +94,7 @@
             <th scope="col">Số điện thoại</th>
             <th scope="col">Email</th>
             <th scope="col">Địa chỉ</th>
-            <th scope="col">Chỉnh sửa</th>
-            <th scope="col">Xóa</th>
+            <th scope="col">Dịch vụ đi kèm</th>
         </tr>
         <th:block th:each="customer : ${customers}">
             <tr>
@@ -115,15 +107,14 @@
                 <td th:text="${customer.getPhoneNumber()}"></td>
                 <td th:text="${customer.getEmail()}"></td>
                 <td th:text="${customer.getAddress()}"></td>
-                <td><a class="btn btn-outline-success" th:href="@{/customer/{id}/update(id=${customer.getId()})}">Sửa</a></td>
-                <td><a class="btn btn-outline-success" th:href="@{/customer/{id}/remove(id=${customer.getId()})}">Xóa</a></td>
+                <td><a class="btn btn-outline-success" th:href="@{/customer/{id}/listAttachFacility(id=${customer.getId()})}">Dịch vụ đi kèm</a></td>
             </tr>
         </th:block>
     </table>
-    <a th:href="@{/customer/list(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}"
+    <a th:href="@{/customer/listCustomerJoinContract(page=${customers.number - 1})}" th:if="${customers.hasPrevious()}"
        class="btn btn-success">Previous</a>
     <span th:text="${customers.number+1}+'/'+${customers.totalPages}"></span>
-    <a th:href="@{/customer/list(page=${customers.number + 1})}" th:if="${customers.hasNext()}" class="btn btn-success">Next</a>
+    <a th:href="@{/customer/listCustomerJoinContract(page=${customers.number + 1})}" th:if="${customers.hasNext()}" class="btn btn-success">Next</a>
 </div>
 </body>
 <!-- JavaScript Bundle with Popper -->

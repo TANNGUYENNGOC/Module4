@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="row sticky-top" style="height: 10%;margin-bottom: 10px">
-        <div class="col-xl-8 " style="background-color: #0d6056;padding-top: 5px">
+        <div class="col-xl-7 " style="background-color: #0d6056;padding-top: 5px">
             <ul class="nav  justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link active" style="color: white" aria-current="page" href="/">Home</a>
@@ -53,13 +53,13 @@
                 </li>
             </ul>
         </div>
-        <div class="col-xl-4" style="background-color: #0d6056;padding-top: 10px">
+        <div class="col-xl-5" style="background-color: #0d6056;padding-top: 10px">
             <form class="d-flex" role="search" action="/facility" method="get">
-                <div class="col-7 d-flex">
+                <div class="col-6 d-flex">
                     <input  style="height: 80%" class="form-control me-2" type="search" placeholder="Tên dịch vụ"
                             aria-label="Search" name="name" >
                 </div>
-                <div class="form-control-sm me-2">
+                <div class="col-4">
                     <select class="form-select"  name="facilityType">
                         <option th:value="${''}">Facility Type</option>
                         <option th:each="facilityType : ${listFacilityType}"
@@ -67,6 +67,7 @@
                                 th:text="${facilityType.name}"></option>
                     </select>
                 </div>
+
                 <button class="btn btn-outline-success" type="submit"
                         style="background-color: #5c636a;height: 80%;border: 2px solid yellow;color: white">Search
                 </button>

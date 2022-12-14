@@ -117,4 +117,18 @@ public class CustomerController {
         model.addAttribute("customers", customerDTO1s);
         return "customer/list";
     }
+
+    @GetMapping("/listCustomerJoinContract")
+    public String listCustomerJoinContract(Model model,@PageableDefault(page = 0, size = 3)Pageable pageable){
+        Page<CustomerDTO1> customerDTO1s = customerService.listCustomerJoinContract(pageable);
+        model.addAttribute("customers", customerDTO1s);
+        return "/customer/list1";
+    }
+    @GetMapping("{id}/listAttachFacility")
+    public String listAttachFacility(Model model
+            ,@PageableDefault(page = 0, size = 3)Pageable pageable
+            ,@PathVariable("id") int id){
+        model.addAttribute("list",customerService.listAttachFacility(id,pageable));
+        return "attach_facility/list";
+    }
 }
